@@ -1,0 +1,15 @@
+{"timestamp":"2025-10-16T19:41:05.290Z","userId":4,"action":"task.create","resourceType":"Task","resourceId":6,"meta":{"title":"Third Test","status":"todo"}}
+{"timestamp":"2025-10-16T19:41:29.009Z","userId":4,"action":"task.update","resourceType":"Task","resourceId":6,"meta":{"changes":{"status":{"from":"todo","to":"in-progress"}}}}
+{"timestamp":"2025-10-16T19:42:08.050Z","userId":4,"action":"task.delete","resourceType":"Task","resourceId":4,"meta":{"title":"Updated Audit Task","status":"in-progress"}}
+{"timestamp":"2025-10-19T23:07:24.323Z","userId":4,"action":"task.create","resourceType":"Task","resourceId":7,"meta":{"title":"Tesst","status":"todo"}}
+{"timestamp":"2025-10-19T23:15:52.766Z","userId":4,"action":"task.delete","resourceType":"Task","resourceId":5,"meta":{"title":"Second Audit Test","status":"in-progress"}}
+{"timestamp":"2025-10-19T23:28:42.174Z","userId":4,"action":"task.create","resourceType":"Task","resourceId":8,"meta":{"title":"Test4","status":"done"}}
+{"timestamp":"2025-10-19T23:29:17.340Z","userId":4,"action":"task.create","resourceType":"Task","resourceId":9,"meta":{"title":"Test5","status":"todo"}}
+{"timestamp":"2025-10-20T00:30:22.262Z","userId":4,"action":"task.delete","resourceType":"Task","resourceId":3,"meta":{"title":"Review PR","status":"done"}}
+{"timestamp":"2025-10-20T03:47:32.567Z","userId":8,"action":"task.delete","resourceType":"Task","resourceId":1,"meta":{"title":"Complete Phase 4","status":"in-progress"}}
+{"timestamp":"2025-10-20T03:47:57.252Z","userId":8,"action":"task.create","resourceType":"Task","resourceId":10,"meta":{"title":"NEw Admin Tassk","status":"todo"}}
+{"timestamp":"2025-10-20T03:48:58.336Z","userId":8,"action":"task.delete","resourceType":"Task","resourceId":10,"meta":{"title":"NEw Admin Tassk","status":"todo"}}
+{"timestamp":"2025-10-20T04:39:53.407Z","userId":8,"action":"task.delete","resourceType":"Task","resourceId":8,"meta":{"title":"Test4","status":"todo"}}
+{"timestamp":"2025-10-20T04:40:23.599Z","userId":8,"action":"task.create","resourceType":"Task","resourceId":11,"meta":{"title":"Tesst512","status":"in-progress"}}
+{"timestamp":"2025-10-20T04:40:52.256Z","userId":8,"action":"task.update","resourceType":"Task","resourceId":11,"meta":{"changes":{"status":{"from":"in-progress","to":"done"}}}}
+{"timestamp":"2025-10-21T04:42:06.848Z","userId":8,"action":"task.create","resourceType":"Task","resourceId":12,"meta":{"title":"Task 5","status":"todo"}}
