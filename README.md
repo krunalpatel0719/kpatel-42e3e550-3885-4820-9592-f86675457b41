@@ -747,33 +747,9 @@ The Angular dashboard provides an intuitive interface for managing tasks:
 
 ## Testing Strategy
 
-This project includes comprehensive test coverage for both backend and frontend, focusing on core functionality as required by project.md.
+This project includes comprehensive test coverage for both backend and frontend, focusing on core functionality.
 
 ### Backend Testing
-
-We use Jest for backend testing with the following test suites:
-
-**Authentication & Authorization:**
-
-- JWT Strategy validation and user lookup ([jwt.strategy.spec.ts](api/src/app/auth/strategies/jwt.strategy.spec.ts))
-- JWT Auth Guard implementation ([jwt-auth.guard.spec.ts](api/src/app/auth/guards/jwt-auth.guard.spec.ts))
-- Auth Service (registration, login, password validation) ([auth.service.spec.ts](api/src/app/auth/auth.service.spec.ts))
-- Auth Controller endpoints ([auth.controller.spec.ts](api/src/app/auth/auth.controller.spec.ts))
-
-**RBAC & Access Control:**
-
-- Roles Guard with permission enforcement ([roles.guard.spec.ts](auth/src/lib/roles.guard.spec.ts))
-- Organization scope utility (hierarchy checks) ([org-scope.util.spec.ts](auth/src/lib/org-scope.util.spec.ts))
-
-**Core Services:**
-
-- Users Service (password hashing, conflict detection) ([users.service.spec.ts](api/src/app/users/users.service.spec.ts))
-- Organizations Service (2-level hierarchy, access checks) ([organizations.service.spec.ts](api/src/app/organizations/organizations.service.spec.ts))
-- Organizations Controller (CRUD with RBAC) ([organizations.controller.spec.ts](api/src/app/organizations/organizations.controller.spec.ts))
-- Tasks Service (CRUD, permission checks) ([tasks.service.spec.ts](api/src/app/tasks/tasks.service.spec.ts))
-- Tasks Controller (role-based access) ([tasks.controller.spec.ts](api/src/app/tasks/tasks.controller.spec.ts))
-- Audit Service (log recording and retrieval) ([audit.service.spec.ts](api/src/app/audit/audit.service.spec.ts))
-- Audit Controller (RBAC for audit logs) ([audit.controller.spec.ts](api/src/app/audit/audit.controller.spec.ts))
 
 Run backend tests:
 
@@ -782,28 +758,6 @@ npx nx test api
 ```
 
 ### Frontend Testing
-
-We use Jest for frontend testing:
-
-**Authentication & Routing:**
-
-- Auth Guard (protected routes) ([auth.guard.spec.ts](apps/dashboard/src/app/guards/auth.guard.spec.ts))
-- Guest Guard (redirect authenticated users) ([guest.guard.spec.ts](apps/dashboard/src/app/guards/guest.guard.spec.ts))
-- Auth Interceptor (token attachment) ([auth.interceptor.spec.ts](apps/dashboard/src/app/interceptors/auth.interceptor.spec.ts))
-- Auth Service (login, logout, token management) ([auth.service.spec.ts](apps/dashboard/src/app/services/auth.service.spec.ts))
-
-**Components:**
-
-- Login Component (form validation, auth flow) ([login.component.spec.ts](apps/dashboard/src/app/pages/login/login.component.spec.ts))
-- Register Component (form validation, org selection) ([register.component.spec.ts](apps/dashboard/src/app/pages/register/register.component.spec.ts))
-- Home Component (task loading) ([home.component.spec.ts](apps/dashboard/src/app/pages/home/home.component.spec.ts))
-- Task Board Component (status filtering, drag-drop) ([task-board.component.spec.ts](apps/dashboard/src/app/components/task-board/task-board.component.spec.ts))
-- Task Card Component (display, events) ([task-card.component.spec.ts](apps/dashboard/src/app/components/task-card/task-card.component.spec.ts))
-- Task Editor Component (create/edit forms) ([task-editor.component.spec.ts](apps/dashboard/src/app/components/task-editor/task-editor.component.spec.ts))
-
-**Services:**
-
-- Organizations Service (HTTP calls) ([organizations.service.spec.ts](apps/dashboard/src/app/services/organizations.service.spec.ts))
 
 Run frontend tests:
 
@@ -819,7 +773,6 @@ npx nx run-many --target=test --all
 
 ### Test Coverage Summary
 
-The test suite covers all critical paths required by project.md:
 
 - ✅ JWT-based authentication and token validation
 - ✅ RBAC logic (Roles Guard, organization scoping)
@@ -828,64 +781,14 @@ The test suite covers all critical paths required by project.md:
 - ✅ Guards and interceptors for route protection
 - ✅ Organization hierarchy validation (2-level max)
 - ✅ Audit logging functionality
-
-**Note:** These tests focus on essential functionality. For production, consider adding:
-
-- E2E tests with real database
-- Performance and load testing
-- Integration tests for complete user flows
-
----
-
-## Building for Production
-
-### Backend
-
-```bash
-npx nx build api
-```
-
-The compiled output will be in `dist/apps/api/`.
-
-**Important production changes**:
-
-1. Update `api/.env`:
-
-   - Set a strong, unique `JWT_SECRET`
-   - Use PostgreSQL instead of SQLite: `DB_TYPE=postgres`
-   - Set `DB_HOST`, `DB_PORT`, `DB_USERNAME`, `DB_PASSWORD`, `DB_DATABASE`
-
-2. Disable TypeORM auto-sync and use migrations:
-
-   - Set `synchronize: false` in `database.module.ts`
-   - Run migrations: `npm run migration:run`
-
-3. Configure CORS to only allow your frontend origin
-
-4. Enable HTTPS and use environment-appropriate secrets management
-
-### Frontend
-
-```bash
-npx nx build dashboard
-```
-
-The compiled output will be in `dist/apps/dashboard/`.
-
-Update the API URL in the environment files:
-
-- `apps/dashboard/src/environments/environment.prod.ts`
-
-Serve with a web server like Nginx or deploy to a static hosting service.
-
 ---
 
 ## Future Enhancements
 
 ### Advanced Features
 
-- **Task Completion Visualization**: Add charts/graphs to visualize task completion rates (bonus feature from project.md)
-- **Dark/Light Mode Toggle**: Implement theme switching for better UX (bonus feature from project.md)
+- **Task Completion Visualization**: Add charts/graphs to visualize task completion rates
+- **Dark/Light Mode Toggle**: Implement theme switching for better UX
 - **Role Delegation**: Allow Admins to temporarily grant elevated permissions to specific users
 - **Task Dependencies**: Link tasks with "blocks" or "depends on" relationships
 - **Task Templates**: Create reusable task templates for common workflows
@@ -898,7 +801,6 @@ Serve with a web server like Nginx or deploy to a static hosting service.
 ### Security Improvements
 
 - **JWT Refresh Tokens**: Implement refresh token rotation to keep users logged in securely
-- **CSRF Protection**: Add CSRF tokens when using session-based authentication
 - **Rate Limiting**: Prevent brute-force attacks on login endpoints
 - **Password Policy**: Enforce minimum password strength requirements
 - **Two-Factor Authentication (2FA)**: Add 2FA for enhanced security
